@@ -53,7 +53,7 @@ matlabbatch1{6}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
 matlabbatch1{6}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
 matlabbatch1{6}.spm.spatial.normalise.estwrite.woptions.bb = [-78 -112 -70
                                                                78 76 85];
-matlabbatch1{6}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+matlabbatch1{6}.spm.spatial.normalise.estwrite.woptions.vox = [2 2 2];
 matlabbatch1{6}.spm.spatial.normalise.estwrite.woptions.interp = 4;
 matlabbatch1{6}.spm.spatial.normalise.estwrite.woptions.prefix = 'w';
 
