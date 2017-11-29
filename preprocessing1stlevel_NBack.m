@@ -1,6 +1,6 @@
 clear
 
-filepath = '/Users/dewate01/Desktop/Test_PHIME';
+filepath = '/Users/dewate01/Desktop/Data_PHIME_renewal/Data';
 inputs = cell(0, 1);
 test_script_Yuri_fMRI_NBack
 matlabbatch1{6}.spm.spatial.normalise.estwrite.eoptions.tpm = {'/Users/dewate01/Downloads/spm12/tpm/TPM.nii'};
@@ -36,7 +36,7 @@ for h=1:numel(dirinfo) %Subjects loop
     for e=1:1%numel(dirinfo_struct) %structural
         FullFilePath(numel(dirinfo_struct)*(h-1)+e)=strcat(filepath,'/',dirinfo(h).name,'/',dirinfo_struct(e).name, '/'); % Full file path
         dirinfo3 = dir(char(FullFilePath(numel(dirinfo_struct)*(h-1)+e)));
-        dirinfo3(1:3) = [];
+        dirinfo3(1:2) = [];
         
         for f=1:numel(dirinfo3)
             matlabbatch1{2}.spm.util.import.dicom.data{f,1}=char(strcat(FullFilePath(numel(dirinfo_struct)*(h-1)+e),dirinfo3(f).name));
@@ -47,15 +47,15 @@ for h=1:numel(dirinfo) %Subjects loop
     for g=2:2%1:numel(dirinfo_FMRI) %Tasks loop
         FullFilePath_FMRI(numel(dirinfo_FMRI)*(h-1)+g)=strcat(filepath,'/',dirinfo(h).name,'/fMRI/',dirinfo_FMRI(g).name, '/'); % Full file path
         dirinfo3_FMRI = dir(char(FullFilePath_FMRI(numel(dirinfo_FMRI)*(h-1)+g)));
-        dirinfo3_FMRI(1:3) = [];
+        dirinfo3_FMRI(1:2) = [];
         
         for f=1:numel(dirinfo3_FMRI)
             matlabbatch1{1}.spm.util.import.dicom.data{f,1}=char(strcat(FullFilePath_FMRI(numel(dirinfo_FMRI)*(h-1)+g),dirinfo3_FMRI(f).name));
         end
         matlabbatch1{1}.spm.util.import.dicom.outdir{1,1} = char(FullFilePath_FMRI(numel(dirinfo_FMRI)*(h-1)+g));
     end
-%      spm('defaults', 'FMRI');
-%      spm_jobman('run', matlabbatch1, inputs{:});
+     spm('defaults', 'FMRI');
+     spm_jobman('run', matlabbatch1, inputs{:});
     
 end
 for h=1:numel(dirinfo) %Subjects loop
