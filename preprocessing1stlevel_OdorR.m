@@ -71,7 +71,7 @@ for h=1:numel(dirinfo) %Subjects loop
         end
         matlabbatch2{1}.spm.stats.fmri_spec.sess.multi_reg{1,1}=char(strcat(FullFilePath_FMRI2,rp.name));
         cd(char(strcat(filepath, '/', dirinfo(h).name)))
-        dir_model = strcat('model', '_', dirinfo(h).name, '_', dirinfo_FMRI(j).name);
+        dir_model = strcat('model', '_', dirinfo(h).name, '_', dirinfo_FMRI(j).name, '/R_OLF/');
         mkdir(char(dir_model));
         matlabbatch2{1}.spm.stats.fmri_spec.dir{1,1}= char(strcat(filepath, '/', dirinfo(h).name, '/', dir_model,'/'));
         matlabbatch2{2}.spm.stats.fmri_est.spmmat{1,1} = char(strcat(filepath,'/',dirinfo(h).name,'/',dir_model, '/','SPM.mat'));
